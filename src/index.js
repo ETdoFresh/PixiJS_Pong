@@ -5,6 +5,9 @@ document.getElementById("app").appendChild(app.view);
 
 app.start();
 
+// DEBUG
+window.app = app;
+
 try {
     module.hot.dispose(() => {
         app.destroy();

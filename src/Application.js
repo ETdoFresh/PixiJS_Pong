@@ -1,15 +1,12 @@
-import { DummyPhys } from "./systems/DummyPhys.js";
-import { Game } from "./systems/Game.js";
-import { Menu } from "./systems/Menu.js";
-import { Pack } from "./systems/Pack.js";
-import { Visual } from "./systems/Visual.js";
+import { SceneManager } from "./scenes/SceneManager.js";
+import { PongScene } from "./scenes/PongScene.js"; 
 
 export class Application {
     constructor() {
         this.renderer = new PIXI.Renderer({
-            width: 1280,
-            height: 720,
-            backgroundColor: 0xffc0cb
+            width: 858,
+            height: 525,
+            backgroundColor: 0x020202
         });
         this.root = new PIXI.Container();
 
@@ -24,18 +21,7 @@ export class Application {
             loop: new PIXI.Runner("loop")
         };
 
-        this.addSystem("game", Game);
-        this.addSystem("pack", Pack);
-        this.addSystem("menu", Menu);
-        this.addSystem("visual", Visual);
-        this.addSystem("dummyPhys", DummyPhys);
-    }
-
-    addSystem(name, classRef) {
-        this[name] = new classRef(this);
-        for (let key in this.runners) {
-            this.runners[key].add(this[name]);
-        }
+        this.sceneManager = new SceneManager(this);
     }
 
     get view() {
@@ -44,10 +30,7 @@ export class Application {
 
     async start() {
         this.ticker.start();
-        await this.pack.start();
-        await new Promise(resolve => setTimeout(resolve, 2000));
-        this.menu.start();
-        this.game.initLevel(this.pack.allLevels[0]);
+        this.sceneManager.loadScene(PongScene);
     }
 
     render() {
