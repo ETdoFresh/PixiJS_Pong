@@ -1,4 +1,3 @@
-import * as PIXI from "/src/pixi.mjs";
 import { BunnyLevel } from "../levels/BunnyLevel.js";
 import { FlowerLevel } from "../levels/FlowerLevel.js";
 import { Holy } from "../levels/Holy.js";

@@ -1,4 +1,3 @@
-import * as PIXI from "/src/pixi.mjs";
 import { Level } from "./Level.js";
 
 export class Holy extends Level {

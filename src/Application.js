@@ -1,4 +1,3 @@
-import * as PIXI from "/src/pixi.mjs";
 import { DummyPhys } from "./systems/DummyPhys.js";
 import { Game } from "./systems/Game.js";
 import { Menu } from "./systems/Menu.js";

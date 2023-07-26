@@ -1,5 +1,3 @@
-import * as PIXI from "/src/pixi.mjs";
-
 const style = new PIXI.TextStyle({
   fontFamily: "Arial",
   fontSize: 36,
