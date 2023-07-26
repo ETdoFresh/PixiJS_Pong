@@ -34,7 +34,7 @@ export class Menu {
       btn.x = ((i + 1) / (allLevels.length + 2)) * 720;
       this.app.root.addChild(btn);
 
-      btn.interactive = true;
+      btn.eventMode = 'static';
       btn.on('pointerdown', () => {
         this.app.game.initLevel(allLevels[i]);
       });
