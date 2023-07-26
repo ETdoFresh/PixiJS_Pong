@@ -1,4 +1,4 @@
-
+import * as PIXI from "/src/pixi.mjs";
 
 const style = new PIXI.TextStyle({
   fontFamily: "Arial",
@@ -25,7 +25,7 @@ export class Menu {
     this.app.root.addChild(this.ui);
   }
 
-  afterLoad() {
+  start() {
     const { allLevels } = this.app.pack;
 
     for (let i = 0; i < allLevels.length; i++) {
@@ -35,9 +35,9 @@ export class Menu {
       this.app.root.addChild(btn);
 
       btn.interactive = true;
-      btn.click = () => {
+      btn.on('pointerdown', () => {
         this.app.game.initLevel(allLevels[i]);
-      };
+      });
     }
   }
 }

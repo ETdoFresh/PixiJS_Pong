@@ -1,3 +1,4 @@
+import * as PIXI from "/src/pixi.mjs";
 import { BunnyLevel } from "../levels/BunnyLevel.js";
 import { FlowerLevel } from "../levels/FlowerLevel.js";
 import { Holy } from "../levels/Holy.js";
@@ -5,16 +6,10 @@ import { Holy } from "../levels/Holy.js";
 export class Pack {
   constructor(app) {
     this.app = app;
-    this.loader = new PIXI.Loader();
     this.allLevels = [new BunnyLevel(), new FlowerLevel()];
   }
 
-  afterLoad() {
-    this.bunnyTex = this.loader.resources.bunny.texture;
-    this.flowerTex = this.loader.resources.flowerTop.texture;
-  }
-
-  start() {
+  async start() {
     const { app } = this;
     const { game } = app;
     game.initLevel(new Holy());
@@ -24,23 +19,7 @@ export class Pack {
     };
     //Cross-Origin Ritual Sacrifice
 
-    this.loader
-      .add(
-        "bunny",
-        "https://pixijs.io/examples/examples/assets/bunny.png",
-        options
-      )
-      .add(
-        "flowerTop",
-        "https://pixijs.io/examples/examples/assets/flowerTop.png",
-        options
-      )
-      .load(() => {
-        setTimeout(() => {
-          this.afterLoad();
-          this.app.menu.afterLoad();
-          game.initLevel(this.allLevels[0]);
-        }, 2000);
-      });
+    this.bunnyTex = await PIXI.Assets.load("https://pixijs.io/examples/examples/assets/bunny.png")
+    this.flowerTex = await PIXI.Assets.load("https://pixijs.io/examples/examples/assets/flowerTop.png")
   }
 }

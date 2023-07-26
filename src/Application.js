@@ -1,3 +1,4 @@
+import * as PIXI from "/src/pixi.mjs";
 import { DummyPhys } from "./systems/DummyPhys.js";
 import { Game } from "./systems/Game.js";
 import { Menu } from "./systems/Menu.js";
@@ -42,9 +43,12 @@ export class Application {
         return this.renderer.view;
     }
 
-    start() {
+    async start() {
         this.ticker.start();
-        this.pack.start();
+        await this.pack.start();
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        this.menu.start();
+        this.game.initLevel(this.pack.allLevels[0]);
     }
 
     render() {

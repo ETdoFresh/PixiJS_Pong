@@ -1,4 +1,4 @@
-
+import * as PIXI from "/src/pixi.mjs";
 
 export class Visual {
   constructor(app) {

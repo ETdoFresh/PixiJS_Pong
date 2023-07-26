@@ -1,3 +1,5 @@
+import * as PIXI from "/src/pixi.mjs";
+
 export class Game {
   constructor(app) {
     this.app = app;
