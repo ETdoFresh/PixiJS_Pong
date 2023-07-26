@@ -15,16 +15,16 @@ export class DummyPhys {
           entity.x = -entity.x;
           dummy.vx = -dummy.vx;
         }
-        if (entity.x > 720) {
-          entity.x = 720 * 2 - entity.x;
+        if (entity.x > 1280) {
+          entity.x = 1280 * 2 - entity.x;
           dummy.vx = -dummy.vx;
         }
         if (entity.y < 0) {
           entity.y = -entity.y;
           dummy.vy = -dummy.vy;
         }
-        if (entity.y > 1280) {
-          entity.y = 1280 * 2 - entity.y;
+        if (entity.y > 720) {
+          entity.y = 720 * 2 - entity.y;
           dummy.vy = -dummy.vy;
         }
       }

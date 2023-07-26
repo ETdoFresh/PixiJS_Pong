@@ -8,8 +8,8 @@ import { Visual } from "./systems/Visual.js";
 export class Application {
     constructor() {
         this.renderer = new PIXI.Renderer({
-            width: 720,
-            height: 1280,
+            width: 1280,
+            height: 720,
             backgroundColor: 0xffc0cb
         });
         this.root = new PIXI.Container();

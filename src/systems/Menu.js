@@ -30,8 +30,8 @@ export class Menu {
 
     for (let i = 0; i < allLevels.length; i++) {
       const btn = new PIXI.Text(`Level ${i + 1}`, style);
-      btn.y = 1100;
-      btn.x = ((i + 1) / (allLevels.length + 2)) * 720;
+      btn.y = 630;
+      btn.x = ((i + 1) / (allLevels.length + 2)) * 1280;
       this.app.root.addChild(btn);
 
       btn.eventMode = 'static';
