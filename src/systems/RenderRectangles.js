@@ -1,27 +1,14 @@
-export class RenderRectangles {
-    constructor(app) {
-        this.app = app;
-    }
+import { System } from "./System.js";
+import { Components } from "../components/Components.js";
 
-    get container() {
-        return this.app.sceneManager.container;
-    }
-
+export class RenderRectangles extends System {
     get queryEntities() {
-        //return this.app.queryManager.getEntities("Rectangle");
-        var entities = [];
-        for (let i = 0; i < this.app.sceneManager.scene.entities.length; i++) {
-            const entity = this.app.sceneManager.scene.entities[i];
-            if (entity.hasComponent("Rectangle")) {
-                entities.push(entity);
-            }
-        }
-        return entities;
+        return this.app.queryManager.getEntities(Components.Rectangle);
     }
 
     entityAdded(entity) {
-        if (!entity.hasComponent("Rectangle")) return;
-        const rectangle = entity.getComponent("Rectangle");
+        const rectangle = entity.getComponent(Components.Rectangle);
+        if (!rectangle) return;
         rectangle.pixi = new PIXI.Graphics();
         rectangle.pixi.beginFill(rectangle.color || 0xFFFFFF);
         rectangle.pixi.drawRect(0, 0, 1, 1);
@@ -33,8 +20,8 @@ export class RenderRectangles {
     }
 
     entityRemoved(entity) {
-        if (!entity.hasComponent("Rectangle")) return;
-        const rectangle = entity.getComponent("Rectangle");
+        const rectangle = entity.getComponent(Components.Rectangle);
+        if (!rectangle) return;
         this.container.removeChild(rectangle.pixi);
     }
 
@@ -42,8 +29,7 @@ export class RenderRectangles {
         const entities = this.queryEntities;
         for (let i = 0; i < entities.length; i++) {
             const entity = entities[i];
-            if (!entity.hasComponent("Rectangle")) continue;
-            const rectangle = entity.getComponent("Rectangle");
+            const rectangle = entity.getComponent(Components.Rectangle);
             if (!rectangle.pixi) continue;
             rectangle.pixi.position.set(rectangle.x, rectangle.y);
             rectangle.pixi.width = rectangle.width;

@@ -1,4 +1,5 @@
 import { SceneManager } from "./scenes/SceneManager.js";
+import { QueryManager } from "./queries/QueryManager.js";
 import { PongScene } from "./scenes/PongScene.js"; 
 
 export class Application {
@@ -22,6 +23,7 @@ export class Application {
         };
 
         this.sceneManager = new SceneManager(this);
+        this.queryManager = new QueryManager(this);
     }
 
     get view() {

@@ -32,11 +32,6 @@ export class Scene {
         delete this.systems[name];
     }
 
-    beforeLoadEntities() { }
     loadEntities() { }
-    afterLoadEntities() { }
-    beforeUnloadEntities() { }
-    unloadEntities() { }
-    afterUnloadEntities() { }
     loadSystems() { }
 }

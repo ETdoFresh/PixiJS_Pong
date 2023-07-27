@@ -8,6 +8,6 @@ export class Entity {
     }
 
     getComponent(component) {
-        return this.components[component];
+        return this.hasComponent(component) ? this.components[component] : null;
     }
 }
