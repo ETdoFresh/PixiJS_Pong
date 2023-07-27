@@ -1,3 +1,5 @@
+import { ListenForInput } from "../systems/ListenForInput.js";
+
 export class Scene { 
     constructor(app) { 
         this.entities = [];
@@ -32,6 +34,21 @@ export class Scene {
         delete this.systems[name];
     }
 
-    loadEntities() { }
-    loadSystems() { }
+    loadEntities() {
+
+    }
+
+    loadSystems() { 
+        this.addSystem("listenForInput", ListenForInput);
+    }
+
+    unloadEntities() {
+        this.entities = [];
+    }
+
+    unloadSystems() {
+        for (let key in this.systems) {
+            this.removeSystem(key);
+        }
+    }
 }

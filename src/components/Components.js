@@ -1,4 +1,5 @@
 export const Components = {
+    Input: "Input",
     Rectangle: "Rectangle",
     Velocity: "Velocity",
     Position: "Position",

@@ -1,9 +1,9 @@
 import { System } from './System.js';
 import { Components } from '../components/Components.js';
 
-export class BindScoreToText extends System {
+export class WinGame extends System {
     get queryEntities() {
-        return this.app.queryManager.getEntities(Components.Score, Components.Text);
+        return this.app.queryManager.getEntities(Components.Score);
     }
 
     loop(delta) {
@@ -11,8 +11,10 @@ export class BindScoreToText extends System {
         for (let i = 0; i < entities.length; i++) {
             const entity = entities[i];
             const score = entity.getComponent(Components.Score);
-            const text = entity.getComponent(Components.Text);
-            text.text = score.value ? score.value.toString() : '0';
+            if (score.value >= 11) {
+                console.log('win');
+                this.app.sceneManager.restartScene();
+            }
         }
     }
 }

@@ -18,7 +18,8 @@ export class ScoreBallScreenLeft extends System {
                 rectangle.x = this.app.view.width / 2 - rectangle.width / 2;
                 rectangle.y = this.app.view.height / 2 - rectangle.height / 2;
                 ball.velocity.x = 5;
-                score2Component.score += 1;
+                ball.velocity.y = ball.velocity.y > 0 ? 5 : -5;
+                score2Component.value += 1;
             }
         }
     }
@@ -41,7 +42,8 @@ export class ScoreBallScreenRight extends System {
                 rectangle.x = this.app.view.width / 2 - rectangle.width / 2;
                 rectangle.y = this.app.view.height / 2 - rectangle.height / 2;
                 ball.velocity.x = -5;
-                score1Component.score += 1;
+                ball.velocity.y = ball.velocity.y > 0 ? 5 : -5;
+                score1Component.value += 1;
             }
         }
     }

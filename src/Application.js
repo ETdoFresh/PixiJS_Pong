@@ -32,7 +32,7 @@ export class Application {
 
     async start() {
         this.ticker.start();
-        this.sceneManager.loadScene(PongScene);
+        this.sceneManager.loadScene(new PongScene(this));
     }
 
     render() {

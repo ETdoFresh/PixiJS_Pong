@@ -11,6 +11,7 @@ export class SceneManager {
     }
 
     reset() {
+        this.unloadScene(this.scene);
         if (this.container) {
             this.container.destroy({ children: true });
         }
@@ -24,8 +25,19 @@ export class SceneManager {
 
     loadScene(scene) {
         this.reset();
-        this.scene = new scene(this.app)
+        this.scene = scene;
         this.scene.loadSystems();
         this.scene.loadEntities();
+    }
+
+    unloadScene(scene) {
+        if (!scene) return;
+        if (this.scene !== scene) return;
+        scene.unloadSystems();
+        scene.unloadEntities();
+    }
+
+    restartScene() {
+        this.loadScene(this.scene);
     }
 }
