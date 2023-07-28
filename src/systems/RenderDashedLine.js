@@ -10,7 +10,6 @@ export class RenderDashedLine extends System {
     entityAdded(entity) {
         const dashedLine = entity.getComponent(Components.DashedLine);
         if (!dashedLine) return;
-        console.log(dashedLine);
         dashedLine.pixi = new PIXI.Graphics();
         this.drawDashLine(dashedLine);
         this.container.addChild(dashedLine.pixi);

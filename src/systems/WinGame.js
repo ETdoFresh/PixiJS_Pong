@@ -12,7 +12,6 @@ export class WinGame extends System {
             const entity = entities[i];
             const score = entity.getComponent(Components.Score);
             if (score.value >= 11) {
-                console.log('win');
                 this.app.sceneManager.restartScene();
             }
         }
