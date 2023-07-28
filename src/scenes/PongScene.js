@@ -43,13 +43,13 @@ export class PongScene extends Scene {
     }));
     this.addEntity(new Entity({
       Name: "Score1",
-      Text: { text: "0", style: { fill: 0xffffff }, x: viewWidth * 0.25, y: 50 },
+      Text: { text: "0", style: { fill: 0xffffff, fontFamily: 'ArcadeClassic', fontSize: 50 }, x: viewWidth * 0.25, y: 50 },
       Score: { value: 0 },
       Player1: {},
     }));
     this.addEntity(new Entity({
       Name: "Score2",
-      Text: { text: "0", style: { fill: 0xffffff }, x: viewWidth * 0.75, y: 50 },
+      Text: { text: "0", style: { fill: 0xffffff , fontFamily: 'ArcadeClassic', fontSize: 50 }, x: viewWidth * 0.75, y: 50 },
       Score: { value: 0 },
       Player2: {},
     }));
