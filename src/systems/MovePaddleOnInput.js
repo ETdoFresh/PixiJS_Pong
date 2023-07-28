@@ -16,9 +16,11 @@ export class MovePaddleOnPlayer1Input extends System {
             const isKeyboardDownPressed = input.keys['s'];
             const isPointerUpPressed = input.quadrant.pointerDown && input.quadrant.x === -1 && input.quadrant.y === -1;
             const isPointerDownPressed = input.quadrant.pointerDown && input.quadrant.x === -1 && input.quadrant.y === 1;
-            if (isKeyboardUpPressed || isPointerUpPressed) {
+            const isGamepadUpPressed = input.gamepad.leftStickY < -0.5 || input.gamepad.dpadY < -0.5;
+            const isGamepadDownPressed = input.gamepad.leftStickY > 0.5 || input.gamepad.dpadY > 0.5;
+            if (isKeyboardUpPressed || isPointerUpPressed || isGamepadUpPressed) {
                 paddle.velocity.y = -paddle.speed;
-            } else if (isKeyboardDownPressed || isPointerDownPressed) {
+            } else if (isKeyboardDownPressed || isPointerDownPressed || isGamepadDownPressed) {
                 paddle.velocity.y = paddle.speed;
             } else {
                 paddle.velocity.y = 0;
@@ -42,9 +44,11 @@ export class MovePaddleOnPlayer2Input extends System {
             const isKeyboardDownPressed = input.keys['ArrowDown'];
             const isPointerUpPressed = input.quadrant.pointerDown && input.quadrant.x === 1 && input.quadrant.y === -1;
             const isPointerDownPressed = input.quadrant.pointerDown && input.quadrant.x === 1 && input.quadrant.y === 1;
-            if (isKeyboardUpPressed || isPointerUpPressed) {
+            const isGamepadUpPressed = input.gamepad.rightStickY < -0.5;
+            const isGamepadDownPressed = input.gamepad.rightStickY > 0.5;
+            if (isKeyboardUpPressed || isPointerUpPressed || isGamepadUpPressed) {
                 paddle.velocity.y = -paddle.speed;
-            } else if (isKeyboardDownPressed || isPointerDownPressed) {
+            } else if (isKeyboardDownPressed || isPointerDownPressed || isGamepadDownPressed) {
                 paddle.velocity.y = paddle.speed;
             } else {
                 paddle.velocity.y = 0;

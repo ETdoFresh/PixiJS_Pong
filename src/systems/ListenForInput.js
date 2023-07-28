@@ -11,6 +11,7 @@ export class ListenForInput extends System {
         if (!input) return;
         input.keys = {};
         input.quadrant = {}
+        input.gamepad = { leftStickY: 0, rightStickY: 0, dpadY: 0 }
         input.onKeyDown = (event) => { input.keys[event.key] = true; };
         input.onKeyUp = (event) => { input.keys[event.key] = false; };
         input.onPointerDown = (event) => {
@@ -34,5 +35,24 @@ export class ListenForInput extends System {
         window.removeEventListener('keyup', input.onKeyUp);
         window.removeEventListener('pointerdown', input.onPointerDown);
         window.removeEventListener('pointerup', input.onPointerUp);
+    }
+
+    loop(delta) {
+        const entities = this.queryEntities;
+        for (let i = 0; i < entities.length; i++) {
+            const entity = entities[i];
+            const input = entity.getComponent(Components.Input);
+            const gamepads = navigator.getGamepads();
+            input.gamepad.leftStickY = 0;
+            input.gamepad.rightStickY = 0;
+            input.gamepad.dpadY = 0;
+            for (let j = 0; j < gamepads.length; j++) {
+                const gamepad = gamepads[j];
+                if (!gamepad) continue;
+                input.gamepad.leftStickY += gamepad.axes[1];
+                input.gamepad.rightStickY += gamepad.axes[3];
+                input.gamepad.dpadY += gamepad.buttons[13].value - gamepad.buttons[12].value;
+            }
+        }
     }
 }
