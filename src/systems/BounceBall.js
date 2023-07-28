@@ -15,6 +15,7 @@ export class BounceBallScreenTop extends System {
             if (rectangle.y < 0) {
                 rectangle.y = 0;
                 ball.velocity.y *= -1;
+                PIXI.sound.play("pong-wall");
             }
         }
     }
@@ -34,6 +35,7 @@ export class BounceBallScreenBottom extends System {
             if (rectangle.y + rectangle.height > this.app.view.height) {
                 rectangle.y = this.app.view.height - rectangle.height;
                 ball.velocity.y *= -1;
+                PIXI.sound.play("pong-wall");
             }
         }
     }
@@ -53,6 +55,7 @@ export class BounceBallScreenLeft extends System {
             if (rectangle.x < 0) {
                 rectangle.x = 0;
                 ball.velocity.x *= -1;
+                PIXI.sound.play("pong-wall");
             }
         }
     }
@@ -72,6 +75,7 @@ export class BounceBallScreenRight extends System {
             if (rectangle.x + rectangle.width > this.app.view.width) {
                 rectangle.x = this.app.view.width - rectangle.width;
                 ball.velocity.x *= -1;
+                PIXI.sound.play("pong-wall");
             }
         }
     }

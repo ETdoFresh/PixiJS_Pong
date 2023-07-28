@@ -14,6 +14,12 @@ import { WinGame } from "../systems/WinGame.js";
 import { RenderDashedLine } from "../systems/RenderDashedLine.js";
 
 export class PongScene extends Scene {
+  loadAssets() {
+    PIXI.sound.add("pong-wall", "../sounds/pong-wall.wav");
+    PIXI.sound.add("pong-paddle", "../sounds/pong-paddle.wav");
+    PIXI.sound.add("pong-score", "../sounds/pong-score.wav");
+  }
+
   loadEntities() {
     super.loadEntities();
     let viewWidth = this.app.view.width;

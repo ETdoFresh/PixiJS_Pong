@@ -26,6 +26,7 @@ export class SceneManager {
     loadScene(scene) {
         this.reset();
         this.scene = scene;
+        this.scene.loadAssets();
         this.scene.loadSystems();
         this.scene.loadEntities();
     }

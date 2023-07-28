@@ -20,6 +20,7 @@ export class ScoreBallScreenLeft extends System {
                 ball.velocity.x = 5;
                 ball.velocity.y = ball.velocity.y > 0 ? 5 : -5;
                 score2Component.value += 1;
+                PIXI.sound.play("pong-score");
             }
         }
     }
@@ -44,6 +45,7 @@ export class ScoreBallScreenRight extends System {
                 ball.velocity.x = -5;
                 ball.velocity.y = ball.velocity.y > 0 ? 5 : -5;
                 score1Component.value += 1;
+                PIXI.sound.play("pong-score");
             }
         }
     }

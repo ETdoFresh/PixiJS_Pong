@@ -43,6 +43,7 @@ export class BounceBallPaddle extends System {
             if (ball.velocity.y < -ball.speed) {
                 ball.velocity.y = -ball.speed;
             }
+            PIXI.sound.play("pong-paddle");
         }
     }
 }
