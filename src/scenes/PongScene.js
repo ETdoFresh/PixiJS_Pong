@@ -11,6 +11,7 @@ import { MovePaddle } from "../systems/MovePaddle.js";
 import { LimitPaddleToScreen } from "../systems/LimitPaddleToScreen.js";
 import { BounceBallPaddle } from "../systems/BounceBallPaddle.js";
 import { WinGame } from "../systems/WinGame.js";
+import { RenderDashedLine } from "../systems/RenderDashedLine.js";
 
 export class PongScene extends Scene {
   loadEntities() {
@@ -38,7 +39,7 @@ export class PongScene extends Scene {
     }));
     this.addEntity(new Entity({
       Name: "Net",
-      DashedLine: { x: 0, y: 0, width: 10, height: 10 },
+      DashedLine: { x0: viewWidth / 2, y0: 0, x1: viewWidth / 2, y1: viewHeight, lineWidth: 2, color: 0xffffff, alpha: 1, alignment: 0.5 },
     }));
     this.addEntity(new Entity({
       Name: "Score1",
@@ -72,5 +73,6 @@ export class PongScene extends Scene {
     this.addSystem("limitPaddleToScreen", LimitPaddleToScreen);
     this.addSystem("bounceBallPaddle", BounceBallPaddle);
     this.addSystem("winGame", WinGame);
+    this.addSystem("renderDashedLine", RenderDashedLine);
   }
 }
